@@ -11,7 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class TestMyStack {
-	MyStack<Integer> myStack = new MyStack<Integer>();
+	MyStack<Integer> myStack = new MyStack<>();
 	
 		 @BeforeEach
 		    void setUp() {
@@ -20,6 +20,7 @@ class TestMyStack {
 		    }
 	
 
+		 
 	@Test
 	 void test() {
 		myStack.push(222);
