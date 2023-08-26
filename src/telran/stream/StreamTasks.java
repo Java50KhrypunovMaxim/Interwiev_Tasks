@@ -25,10 +25,12 @@ public class StreamTasks {
 		 			.forEach( elem-> System.out.printf("%s : %d\n", elem.getKey(), elem.getValue()));
 	    }
 	
-		
-	
 	private static List<Integer> getRandomGroup() {
-		return new Random().ints(minNumber,maxNumber).boxed().limit(number_Of_Elements).toList();
+		return new Random()
+					.ints(minNumber,maxNumber)
+					.boxed()
+					.limit(number_Of_Elements)
+					.toList();
 	}
 }
 	
