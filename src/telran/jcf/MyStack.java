@@ -6,61 +6,49 @@ import java.util.List;
 
 public class MyStack<T> {
 
-	private LinkedList<T> stack;
-	private LinkedList<T> maxStack;
-	private Comparator<T> comparator;
-
+	LinkedList<T> values = new LinkedList<>();
+	LinkedList<T> maxValues = new LinkedList<>();
+	Comparator<T> comp;
 	public MyStack(Comparator<T> comp) {
-		stack = new LinkedList<>();
-		maxStack = new LinkedList<>();
-		comparator = comp;
+		this.comp = comp;
 	}
-
+	@SuppressWarnings("unchecked")
 	public MyStack() {
-		stack = new LinkedList<>();
-		maxStack = new LinkedList<>();
-	} 
-
-	public void push(T element) {
-		if (maxStack.isEmpty() || comparator.compare(element, maxStack.getFirst()) >= 0) 
-		{
-			maxStack.addFirst(element);
-		} 
-		else if (comparator.compare(element, maxStack.getFirst()) <= 0)
-		{
-			maxStack.addLast(element);
-		}
-		stack.addLast(element);
+		this((Comparator<T>)Comparator.naturalOrder());
 	}
+	
+  public void push(T element) {
+	  values.add(element);
+	  if(maxValues.isEmpty() || comp.compare(element,maxValues.getLast()) >= 0) {
+		  maxValues.add(element);
+	  }
+	  
+  }
+  public T pop() {
+	  //TODO removes the stack's top element and returns it out
+	  //In the case no elements exist in the stack the method throws exception NoSuchElementException
+	  T element = values.removeLast();
+	  if (comp.compare(element, maxValues.getLast()) == 0) {
+		  maxValues.removeLast();
+	  }
+	  return element;
+  }
+  public boolean isEmpty() {
+	  
+	  return values.isEmpty();
+  }
+  public T getMax() {
+	  //TODO returns maximal element from the stack
+	  //In the case no elements exist in the stack the method throws exception NoSuchElementException
+	  return maxValues.getLast();
+  }
 
-	public void pop() {
-		if (isEmpty()) {
-			throw new IllegalStateException("Stack is empty");
-		}
-		System.out.println(stack.getLast());
-		T remove = stack.removeLast();
-		if (comparator.compare(remove, maxStack.getFirst()) == 0) {
-			maxStack.removeFirst();
-		}
-	}
-
-	public boolean isEmpty() {
-
-		return stack.isEmpty();
-	}
-
-	public T getMax() {
-		if (isEmpty()) {
-			throw new IllegalStateException("Stack is empty");
-		}
-		return maxStack.getFirst();
-	}
 
 	public T[] toArray() {
-		return stack.toArray((T[]) new Object[size()]);
+		return values.toArray((T[]) new Object[size()]);
 	}
 
 	private int size() {
-		return stack.size();
+		return values.size();
 	}
 }
