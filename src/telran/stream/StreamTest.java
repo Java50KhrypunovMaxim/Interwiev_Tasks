@@ -91,9 +91,17 @@ class StreamTest {
 	}
 	
 	@Test
+	@Disabled
 	void printDigitStatisticsTest()
 	{
 		StreamTasks.printDigitStatistics();
+	}
+
+	@Test
+
+	void  printSportLotoNumbersTest()
+	{
+		StreamTasks.printSportLotoNumbers();
 	}
 	
 }
