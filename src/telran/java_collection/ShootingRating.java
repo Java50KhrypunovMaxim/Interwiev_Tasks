@@ -1,4 +1,4 @@
-package telran.jcf;
+package telran.java_collection;
 
 public class ShootingRating {
 	

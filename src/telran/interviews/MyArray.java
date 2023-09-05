@@ -7,7 +7,8 @@ import java.util.Map;
 public class MyArray<T> {
 
 	private Map<Integer, T> MyArray;
-
+	
+	private T allValues;
 	private int size;
 	int current = 0;
 
@@ -17,17 +18,16 @@ public class MyArray<T> {
 	}
 
 	public void setAll(T value) {
-		for (int i = 0; i < size; i++) {
-			set(i, value);
-		}
-
+		MyArray = new HashMap<>();
+		allValues= value;
+		
 	}
 
 	public T get(int index) {
 		if (index > size || index < 0) {
 			throw new IndexOutOfBoundsException("Wrong Index");
 		}
-		T obj = MyArray.get(index);
+		T obj = MyArray.getOrDefault(index,allValues);
 		return obj;
 	}
 

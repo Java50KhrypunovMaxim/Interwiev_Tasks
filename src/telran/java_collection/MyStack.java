@@ -1,4 +1,4 @@
-package telran.jcf;
+package telran.java_collection;
 
 import java.util.Comparator;
 import java.util.LinkedList;

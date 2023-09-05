@@ -24,7 +24,7 @@ public class ConnectionsPoolImpl implements ConnectionsPool {
 		boolean res = false;
 		if (!server.containsKey(connection.getId())) {
 			res = true;
-			server.put(connection.getId(), connection);
+			server.put(connection.getId(), connection);// выбор ключа
 		}
 		return res;
 	}

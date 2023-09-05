@@ -6,16 +6,14 @@ import java.util.Map;
 
 public class Anagram {
 	public static boolean isAnagram(String str, String anagram) {
-		if (str.length() != anagram.length()) {
-			return false;
-		}
+		boolean res = false;
+		if (str.length() == anagram.length()) {
 		char[] word = str.toCharArray();
 		char[] anag = anagram.toCharArray();
-
 		Arrays.sort(word);
 		Arrays.sort(anag);
-
-		return Arrays.equals(word, anag);
+		res = Arrays.equals(word, anag);}
+		return res;
 
 	}
 
